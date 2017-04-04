@@ -5,6 +5,10 @@
  */
 package Vista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
+
 /**
  *
  * @author Laboratorio
@@ -16,6 +20,15 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/icono.png"));
+        setIconImage(icon);
+        this.setSize(600, 600);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        admin.setBackground(java.awt.Color.WHITE);
+        cocina.setBackground(java.awt.Color.WHITE);
+        mesero.setBackground(java.awt.Color.WHITE);
+
     }
 
     /**
@@ -27,18 +40,38 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Meseros = new javax.swing.JFrame();
+        admin = new javax.swing.JButton();
+        cocina = new javax.swing.JButton();
+        mesero = new javax.swing.JButton();
+        FONDO = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Restaurante La Prosperidad");
+        getContentPane().setLayout(null);
+
+        admin.setFont(new java.awt.Font("Liberation Serif", 1, 18)); // NOI18N
+        admin.setText("Administración");
+        admin.setBorder(null);
+        admin.setBorderPainted(false);
+        getContentPane().add(admin);
+        admin.setBounds(30, 260, 170, 60);
+
+        cocina.setFont(new java.awt.Font("Liberation Serif", 1, 18)); // NOI18N
+        cocina.setText("Cocina");
+        cocina.setBorder(null);
+        getContentPane().add(cocina);
+        cocina.setBounds(30, 350, 170, 60);
+
+        mesero.setFont(new java.awt.Font("Liberation Serif", 1, 18)); // NOI18N
+        mesero.setText("Meseros");
+        mesero.setBorder(null);
+        getContentPane().add(mesero);
+        mesero.setBounds(30, 440, 170, 60);
+
+        FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Principal.png"))); // NOI18N
+        getContentPane().add(FONDO);
+        FONDO.setBounds(0, -20, 600, 640);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,5 +116,10 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel FONDO;
+    private javax.swing.JFrame Meseros;
+    private javax.swing.JButton admin;
+    private javax.swing.JButton cocina;
+    private javax.swing.JButton mesero;
     // End of variables declaration//GEN-END:variables
 }
