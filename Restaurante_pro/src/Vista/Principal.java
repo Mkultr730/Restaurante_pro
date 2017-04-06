@@ -5,8 +5,12 @@
  */
 package Vista;
 
+import Modelo.Archivo;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -18,13 +22,18 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public Principal() {
+    Archivo ptrF = null;
+    public Principal() throws IOException {
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/icono.png"));
         setIconImage(icon);
-        this.setSize(600, 600);
+        this.setSize(600, 516);
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
+        Meseros.setSize(540, 267);
+        Meseros.setLocationRelativeTo(null);
+        factura.setBackground(java.awt.Color.WHITE);
+        E_pedido.setBackground(java.awt.Color.WHITE);
+        pedido.setBackground(java.awt.Color.WHITE);
         admin.setBackground(java.awt.Color.WHITE);
         cocina.setBackground(java.awt.Color.WHITE);
         mesero.setBackground(java.awt.Color.WHITE);
@@ -41,13 +50,43 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         Meseros = new javax.swing.JFrame();
+        factura = new javax.swing.JButton();
+        pedido = new javax.swing.JButton();
+        E_pedido = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         admin = new javax.swing.JButton();
         cocina = new javax.swing.JButton();
         mesero = new javax.swing.JButton();
         FONDO = new javax.swing.JLabel();
 
+        Meseros.setTitle("Meseros");
+        Meseros.setResizable(false);
+        Meseros.setSize(new java.awt.Dimension(540, 267));
+        Meseros.getContentPane().setLayout(null);
+
+        factura.setText("Factura");
+        factura.setBorder(null);
+        Meseros.getContentPane().add(factura);
+        factura.setBounds(40, 120, 120, 50);
+
+        pedido.setText("Pedido");
+        pedido.setBorder(null);
+        Meseros.getContentPane().add(pedido);
+        pedido.setBounds(390, 120, 120, 50);
+
+        E_pedido.setText("Estado de Pedido");
+        E_pedido.setBorder(null);
+        Meseros.getContentPane().add(E_pedido);
+        E_pedido.setBounds(190, 120, 150, 50);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MeseroP.png"))); // NOI18N
+        Meseros.getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, -30, 620, 320);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante La Prosperidad");
+        setResizable(false);
+        setSize(new java.awt.Dimension(600, 516));
         getContentPane().setLayout(null);
 
         admin.setFont(new java.awt.Font("Liberation Serif", 1, 18)); // NOI18N
@@ -55,26 +94,36 @@ public class Principal extends javax.swing.JFrame {
         admin.setBorder(null);
         admin.setBorderPainted(false);
         getContentPane().add(admin);
-        admin.setBounds(30, 260, 170, 60);
+        admin.setBounds(20, 270, 170, 60);
 
         cocina.setFont(new java.awt.Font("Liberation Serif", 1, 18)); // NOI18N
         cocina.setText("Cocina");
         cocina.setBorder(null);
         getContentPane().add(cocina);
-        cocina.setBounds(30, 350, 170, 60);
+        cocina.setBounds(220, 270, 170, 60);
 
         mesero.setFont(new java.awt.Font("Liberation Serif", 1, 18)); // NOI18N
         mesero.setText("Meseros");
         mesero.setBorder(null);
+        mesero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                meseroActionPerformed(evt);
+            }
+        });
         getContentPane().add(mesero);
-        mesero.setBounds(30, 440, 170, 60);
+        mesero.setBounds(410, 270, 170, 60);
 
-        FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Principal.png"))); // NOI18N
+        FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo2.png"))); // NOI18N
         getContentPane().add(FONDO);
-        FONDO.setBounds(0, -20, 600, 640);
+        FONDO.setBounds(0, -70, 600, 650);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void meseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meseroActionPerformed
+        this.setVisible(false);
+        Meseros.setVisible(true);
+    }//GEN-LAST:event_meseroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,16 +159,24 @@ public class Principal extends javax.swing.JFrame {
                     Thread.sleep(3500);
                 } catch (Exception e) {
                 }
-                new Principal().setVisible(true);
+                try {
+                    new Principal().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton E_pedido;
     private javax.swing.JLabel FONDO;
     private javax.swing.JFrame Meseros;
     private javax.swing.JButton admin;
     private javax.swing.JButton cocina;
+    private javax.swing.JButton factura;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton mesero;
+    private javax.swing.JButton pedido;
     // End of variables declaration//GEN-END:variables
 }

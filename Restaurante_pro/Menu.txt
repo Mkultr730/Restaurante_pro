@@ -1,0 +1,16 @@
+1,paella,14000,30,0
+2,milanesa napolitana,13000,30,0
+3,pollo alla piazzaiola,16000,30,0
+4,Pasta con calabacín y pecorino,15000,30,0
+5,Pasta boloñesa y berenjena,15000,30,0
+6,Lasaña de espinacas y ricotta,15000,30,0
+7,Solomillo de cerdo con salsa gorgonzola,16000,30,0
+8,Piadina de verduras y queso de cabra,20000,30,0
+9,Gaseosa,3000,50,0
+10,Agua,2500,50,0
+11,Malteada,5000,50,0
+12,Te,4000,50,0
+13,Cheese Cake de Guayaba,10000,35,0
+14,Profiteroles,7000,40,0
+15,Flan Napolitano,11000,33,0
+16,Mousse de Chocolate,12000,40,0

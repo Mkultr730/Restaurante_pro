@@ -10,5 +10,16 @@ package Modelo;
  * @author Laboratorio
  */
 public class Pedido {
+    public String mesa;
+    public Plato plato;
+    public boolean estado;  
+    public Pedido link;
+
+    public Pedido(String mesa, Plato plato) {
+        this.mesa = mesa;
+        this.plato = plato;
+        this.estado = false;
+        this.link = null;
+    }
     
 }

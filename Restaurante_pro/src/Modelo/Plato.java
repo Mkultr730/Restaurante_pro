@@ -10,5 +10,21 @@ package Modelo;
  * @author Laboratorio
  */
 public class Plato {
-    
+
+    public int cod;
+    public String nombre;
+    public double precio;
+    public int cantidad;
+    public String mesa;
+    public Plato link;
+
+    public Plato(int cod, String nombre, double precio, int cantidad, String mesa) {
+        this.cod = cod;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.mesa = mesa;
+        this.link = null;
+
+    }
 }
