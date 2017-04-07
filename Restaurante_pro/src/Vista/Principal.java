@@ -54,6 +54,8 @@ public class Principal extends javax.swing.JFrame {
         pedido = new javax.swing.JButton();
         E_pedido = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        Pedido = new javax.swing.JFrame();
+        jButton1 = new javax.swing.JButton();
         admin = new javax.swing.JButton();
         cocina = new javax.swing.JButton();
         mesero = new javax.swing.JButton();
@@ -77,11 +79,19 @@ public class Principal extends javax.swing.JFrame {
         E_pedido.setText("Estado de Pedido");
         E_pedido.setBorder(null);
         Meseros.getContentPane().add(E_pedido);
-        E_pedido.setBounds(190, 120, 150, 50);
+        E_pedido.setBounds(200, 120, 150, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MeseroP.png"))); // NOI18N
         Meseros.getContentPane().add(jLabel1);
         jLabel1.setBounds(0, -30, 620, 320);
+
+        Pedido.getContentPane().setLayout(null);
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("jButton1");
+        jButton1.setBorder(null);
+        Pedido.getContentPane().add(jButton1);
+        jButton1.setBounds(230, 230, 130, 40);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante La Prosperidad");
@@ -172,9 +182,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton E_pedido;
     private javax.swing.JLabel FONDO;
     private javax.swing.JFrame Meseros;
+    private javax.swing.JFrame Pedido;
     private javax.swing.JButton admin;
     private javax.swing.JButton cocina;
     private javax.swing.JButton factura;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton mesero;
     private javax.swing.JButton pedido;
