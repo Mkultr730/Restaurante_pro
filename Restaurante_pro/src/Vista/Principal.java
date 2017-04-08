@@ -24,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
      */
     Archivo ptrF = null;
     public Principal() throws IOException {
+        //hola
         initComponents();
         Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/icono.png"));
         setIconImage(icon);
