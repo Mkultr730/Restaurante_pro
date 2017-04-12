@@ -394,7 +394,6 @@ public class Principal extends javax.swing.JFrame {
                     aux += op.charAt(i);
                 }
             }
-            System.out.println(aux);
             ImageIcon Img = new ImageIcon(getClass().getResource("/Imagenes/" + aux + ".png"));
             image.setIcon(Img);
         }

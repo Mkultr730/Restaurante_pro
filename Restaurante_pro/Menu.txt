@@ -1,7 +1,7 @@
 1,paella,14000,Platillos,0,tomate:2,cebolla:2
 2,milanesa napolitana,13000,Platillos,0
 3,pollo alla piazzaiola,16000,Platillos,0
-4,Pasta con calabacín y pecorino,15000,Platillos,0
+4,Pasta con calabacin y pecorino,15000,Platillos,0
 5,Pasta bolonesa y berenjena,15000,Platillos,0
 6,Lasagna de espinacas y ricotta,15000,Platillos,0
 7,Solomillo de cerdo con salsa gorgonzola,16000,Platillos,0
