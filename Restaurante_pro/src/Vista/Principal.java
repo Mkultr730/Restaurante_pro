@@ -132,7 +132,6 @@ public class Principal extends javax.swing.JFrame {
         Pedido.getContentPane().add(del);
         del.setBounds(700, 140, 130, 40);
 
-        table.setBorder(null);
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -190,7 +189,7 @@ public class Principal extends javax.swing.JFrame {
         back.setBounds(730, 370, 80, 30);
 
         Pedido.getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(720, 240, 90, 26);
+        jComboBox1.setBounds(720, 240, 90, 20);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sebastian", "Jaime", "Esteban", "Perkins" }));
         Pedido.getContentPane().add(jComboBox2);
@@ -198,11 +197,11 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setText("Camarero");
         Pedido.getContentPane().add(jLabel2);
-        jLabel2.setBounds(570, 210, 70, 16);
+        jLabel2.setBounds(570, 210, 70, 14);
 
         jLabel4.setText("Mesa");
         Pedido.getContentPane().add(jLabel4);
-        jLabel4.setBounds(720, 220, 41, 16);
+        jLabel4.setBounds(720, 220, 41, 14);
 
         Fondop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoP.png"))); // NOI18N
         Pedido.getContentPane().add(Fondop);
@@ -225,9 +224,8 @@ public class Principal extends javax.swing.JFrame {
         Menu.getContentPane().add(back1);
         back1.setBounds(540, 640, 110, 40);
         Menu.getContentPane().add(cant);
-        cant.setBounds(690, 600, 70, 28);
+        cant.setBounds(690, 600, 70, 20);
 
-        menu.setBorder(null);
         menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuMouseClicked(evt);
@@ -240,7 +238,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel1.setText("Cantidad");
         Menu.getContentPane().add(jLabel1);
-        jLabel1.setBounds(690, 580, 70, 16);
+        jLabel1.setBounds(690, 580, 70, 14);
 
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Platillos", "Bebidas", "Postres" }));
         tipo.addActionListener(new java.awt.event.ActionListener() {
@@ -273,6 +271,11 @@ public class Principal extends javax.swing.JFrame {
         cocina.setFont(new java.awt.Font("Liberation Serif", 1, 18)); // NOI18N
         cocina.setText("Cocina");
         cocina.setBorder(null);
+        cocina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cocinaActionPerformed(evt);
+            }
+        });
         getContentPane().add(cocina);
         cocina.setBounds(220, 270, 170, 60);
 
@@ -399,9 +402,12 @@ public class Principal extends javax.swing.JFrame {
                 image.setIcon(Img);
             }
         }
-
-
     }//GEN-LAST:event_menuMouseClicked
+
+    private void cocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cocinaActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Felicidad");
+    }//GEN-LAST:event_cocinaActionPerformed
 
     /**
      * @param args the command line arguments
