@@ -384,19 +384,22 @@ public class Principal extends javax.swing.JFrame {
 
     private void menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMouseClicked
         String op = menu.getSelectedValue();
-        if (!op.contains(" ")) {
-            ImageIcon Img = new ImageIcon(getClass().getResource("/Imagenes/" + op + ".png"));
-            image.setIcon(Img);
-        } else {
-            String aux = "";
-            for (int i = 0; i < op.length(); i++) {
-                if (op.charAt(i) != ' ') {
-                    aux += op.charAt(i);
+        if (!op.equals("")) {
+            if (!op.contains(" ")) {
+                ImageIcon Img = new ImageIcon(getClass().getResource("/Imagenes/" + op + ".png"));
+                image.setIcon(Img);
+            } else {
+                String aux = "";
+                for (int i = 0; i < op.length(); i++) {
+                    if (op.charAt(i) != ' ') {
+                        aux += op.charAt(i);
+                    }
                 }
+                ImageIcon Img = new ImageIcon(getClass().getResource("/Imagenes/" + aux + ".png"));
+                image.setIcon(Img);
             }
-            ImageIcon Img = new ImageIcon(getClass().getResource("/Imagenes/" + aux + ".png"));
-            image.setIcon(Img);
         }
+
 
     }//GEN-LAST:event_menuMouseClicked
 
