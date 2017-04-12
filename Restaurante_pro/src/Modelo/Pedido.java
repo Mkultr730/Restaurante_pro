@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Laboratorio
@@ -12,7 +14,8 @@ package Modelo;
 public class Pedido {
     public String mesa;
     public Plato plato;
-    public boolean estado;  
+    public boolean estado;
+    public Date hora;
     public Pedido link;
 
     public Pedido(String mesa, Plato plato) {
