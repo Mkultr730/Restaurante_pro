@@ -1,0 +1,8 @@
+tomate,30
+cebolla,10
+aceite,20
+sal,20
+azucar,20
+queso,20
+tortillas,20
+huevos,20
