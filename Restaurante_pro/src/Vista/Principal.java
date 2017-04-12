@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,13 +28,13 @@ public class Principal extends javax.swing.JFrame implements Runnable {
      * Creates new form Principal
      */
     public Archivo ptrF = null;
+    public Archivo a = new Archivo("", 0, "", 0);
 
     public Principal() throws IOException {
         initComponents();
         h1 = new Thread(this);
         h1.start();
-        Archivo prueba = new Archivo(0, "", 0, "", 0);
-        prueba.ReadFile(ptrF, 24);
+        ptrF = a.ReadFile(ptrF);
         this.setSize(600, 516);
         this.setLocationRelativeTo(null);
         Time.setSize(534, 217);
@@ -148,11 +150,11 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
             },
             new String [] {
-                "Codigo", "Plato", "Cantidad", "Precio", "Total"
+                "Plato", "Cantidad", "Precio", "Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -161,14 +163,12 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         });
         jScrollPane1.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {
-            table.getColumnModel().getColumn(0).setMinWidth(55);
-            table.getColumnModel().getColumn(0).setMaxWidth(55);
-            table.getColumnModel().getColumn(2).setMinWidth(65);
-            table.getColumnModel().getColumn(2).setMaxWidth(65);
+            table.getColumnModel().getColumn(1).setMinWidth(65);
+            table.getColumnModel().getColumn(1).setMaxWidth(65);
+            table.getColumnModel().getColumn(2).setMinWidth(75);
+            table.getColumnModel().getColumn(2).setMaxWidth(75);
             table.getColumnModel().getColumn(3).setMinWidth(75);
             table.getColumnModel().getColumn(3).setMaxWidth(75);
-            table.getColumnModel().getColumn(4).setMinWidth(75);
-            table.getColumnModel().getColumn(4).setMaxWidth(75);
         }
 
         Pedido.getContentPane().add(jScrollPane1);
@@ -188,6 +188,11 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         acep.setBackground(new java.awt.Color(255, 255, 255));
         acep.setText("Aceptar");
         acep.setBorder(null);
+        acep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acepActionPerformed(evt);
+            }
+        });
         Pedido.getContentPane().add(acep);
         acep.setBounds(590, 370, 90, 30);
 
@@ -230,6 +235,11 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         acep1.setBackground(new java.awt.Color(255, 255, 255));
         acep1.setText("Aceptar");
         acep1.setBorder(null);
+        acep1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acep1ActionPerformed(evt);
+            }
+        });
         Menu.getContentPane().add(acep1);
         acep1.setBounds(540, 590, 110, 40);
 
@@ -242,6 +252,8 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         });
         Menu.getContentPane().add(back1);
         back1.setBounds(540, 640, 110, 40);
+
+        cant.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         Menu.getContentPane().add(cant);
         cant.setBounds(690, 600, 70, 28);
 
@@ -455,12 +467,11 @@ public class Principal extends javax.swing.JFrame implements Runnable {
             String c;
             while ((c = br.readLine()) != null) {
                 StringTokenizer st = new StringTokenizer(c, ",");
-                int cod = Integer.parseInt(st.nextElement().toString());
                 String name = st.nextElement().toString();
                 double prec = Double.parseDouble(st.nextElement().toString());
                 String tipo = st.nextElement().toString();
                 int vent = Integer.parseInt(st.nextElement().toString());
-                Archivo u = new Archivo(cod, name, prec, tipo, vent);
+                Archivo u = new Archivo(name, prec, tipo, vent);
                 if (sw == 0) {
                     if (ptrF == null) {
                         ptrF = u;
@@ -471,6 +482,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
                         }
                         p.link = u;
                     }
+
                 } else {
                     if (op.equals(tipo)) {
                         model.addElement(name);
@@ -535,6 +547,66 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private void timeCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeCActionPerformed
         Time.setVisible(true);
     }//GEN-LAST:event_timeCActionPerformed
+
+    private void acep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acep1ActionPerformed
+        int cont = 0;
+        int c = Integer.parseInt(cant.getValue().toString());
+        String op = menu.getSelectedValue();
+        File archivo = new File("Menu.txt");
+        FileReader fr = null;
+        boolean sw = false;
+        try {
+            fr = new FileReader(archivo);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        BufferedReader br = new BufferedReader(fr);
+        String aux;
+        try {
+            while ((aux = br.readLine()) != null) {
+                StringTokenizer st = new StringTokenizer(aux, ",");
+                String name = st.nextElement().toString();
+                double prec = Double.parseDouble(st.nextElement().toString());
+                String tipo = st.nextElement().toString();
+                int vent = Integer.parseInt(st.nextElement().toString());
+                if (name.equals(op)) {
+                    File bodega = new File("Inventario.txt");
+                    FileReader nfr = new FileReader(bodega);
+                    BufferedReader nbf = new BufferedReader(fr);
+                    String d;
+                    while (st.hasMoreElements() && sw == false) {
+                        StringTokenizer nt = new StringTokenizer(st.nextElement().toString(), ":");
+                        String ingrediente = nt.nextElement().toString();
+                        int cant = Integer.parseInt(nt.nextElement().toString());
+                        System.out.println(ingrediente + ", " + cant);
+                        sw = a.Inventario(ingrediente, cant, c);
+                        System.out.println(sw);
+//                        if (sw == true) {
+//                            cont += 1;
+//                        }
+                    }
+                    if (sw == false) {
+                        DefaultTableModel model = (DefaultTableModel) table.getModel();
+                        model.addRow(new Object[]{name, c , prec, (c * prec)});
+                        Pedido.setVisible(true);
+                        Menu.setVisible(false);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "No hay suficientes ingredientes", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_acep1ActionPerformed
+
+    private void acepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acepActionPerformed
+        
+    }//GEN-LAST:event_acepActionPerformed
     public void run() {
         Thread ct = Thread.currentThread();
         while (ct == h1) {

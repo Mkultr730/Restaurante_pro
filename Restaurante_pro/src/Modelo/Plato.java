@@ -11,27 +11,17 @@ package Modelo;
  */
 public final class Plato {
 
-    private int cod;
     private String nombre;
     private double precio;
     private int cantidad;
     private String mesa;
     private Plato link;
 
-    public Plato(int cod, String nombre, double precio, int cantidad, String mesa) {
-        setCod(cod);
+    public Plato(String nombre, double precio, int cantidad, String mesa) {
         setNombre(nombre);
         setPrecio(precio);
         setCantidad(cantidad);
         setMesa(mesa); 
-    }
-
-    public int getCod() {
-        return cod;
-    }
-
-    public void setCod(int cod) {
-        this.cod = cod;
     }
 
     public String getNombre() {
