@@ -6,6 +6,7 @@
 package Vista;
 
 import Modelo.Archivo;
+import Modelo.Plato;
 import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
@@ -70,8 +71,8 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         add = new javax.swing.JButton();
         acep = new javax.swing.JButton();
         back = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        m = new javax.swing.JComboBox<>();
+        c = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Fondop = new javax.swing.JLabel();
@@ -142,6 +143,11 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         del.setBackground(new java.awt.Color(255, 255, 255));
         del.setText("Eliminar");
         del.setBorder(null);
+        del.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delActionPerformed(evt);
+            }
+        });
         Pedido.getContentPane().add(del);
         del.setBounds(700, 140, 130, 40);
 
@@ -207,14 +213,19 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         Pedido.getContentPane().add(back);
         back.setBounds(730, 370, 80, 30);
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        Pedido.getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(720, 240, 90, 26);
+        m.setBackground(new java.awt.Color(255, 255, 255));
+        Pedido.getContentPane().add(m);
+        m.setBounds(720, 240, 90, 26);
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sebastian", "Jaime", "Esteban", "Perkins" }));
-        Pedido.getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(560, 230, 130, 40);
+        c.setBackground(new java.awt.Color(255, 255, 255));
+        c.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sebastian", "Jaime", "Esteban", "Perkins" }));
+        c.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cActionPerformed(evt);
+            }
+        });
+        Pedido.getContentPane().add(c);
+        c.setBounds(560, 230, 130, 40);
 
         jLabel2.setText("Camarero");
         Pedido.getContentPane().add(jLabel2);
@@ -578,19 +589,14 @@ public class Principal extends javax.swing.JFrame implements Runnable {
                         StringTokenizer nt = new StringTokenizer(st.nextElement().toString(), ":");
                         String ingrediente = nt.nextElement().toString();
                         int cant = Integer.parseInt(nt.nextElement().toString());
-                        System.out.println(ingrediente + ", " + cant);
                         sw = a.Inventario(ingrediente, cant, c);
-                        System.out.println(sw);
-//                        if (sw == true) {
-//                            cont += 1;
-//                        }
                     }
                     if (sw == false) {
                         DefaultTableModel model = (DefaultTableModel) table.getModel();
-                        model.addRow(new Object[]{name, c , prec, (c * prec)});
+                        model.addRow(new Object[]{name, c, prec, (c * prec)});
                         Pedido.setVisible(true);
                         Menu.setVisible(false);
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "No hay suficientes ingredientes", "Advertencia", JOptionPane.WARNING_MESSAGE);
                     }
                 }
@@ -605,8 +611,75 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_acep1ActionPerformed
 
     private void acepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acepActionPerformed
-        
+        Plato ptr = null;
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+//        int mesa = Integer.parseInt(m.getSelectedItem().toString());
+        int n = model.getRowCount();
+        for (int i = 0; i < n; i++) {
+            String nombre = model.getValueAt(i, 0).toString();
+            int cantidad = Integer.parseInt(model.getValueAt(i, 1).toString());
+            double precio = Double.parseDouble(model.getValueAt(i, 2).toString());
+            System.out.println(nombre + ":" + cantidad + ":" + precio);
+            Plato q = new Plato(nombre, precio, cantidad);
+            if (ptr == null) {
+                ptr = q;
+            } else {
+                Plato s = ptr;
+                while (s.link != null) {
+                    s = s.link;
+                }
+                s.link = q;
+            }
+        }
+        while(ptr != null){
+            System.out.println(ptr.nombre);
+            ptr = ptr.link;
+        }
+
+//        int hora, minutos, segundos;
+//        Calendar c = new GregorianCalendar();
+//        hora = c.get(Calendar.HOUR_OF_DAY);
+//        minutos = c.get(Calendar.MINUTE);
+//        segundos = c.get(Calendar.SECOND);
+//        Pedido p = new Pedido();
+
     }//GEN-LAST:event_acepActionPerformed
+
+    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        int indiceTabla = table.getSelectedRow();
+        if (indiceTabla != -1) {
+            model.removeRow(indiceTabla);
+        }
+    }//GEN-LAST:event_delActionPerformed
+
+    private void cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActionPerformed
+        m.removeAllItems();
+        String op = c.getSelectedItem().toString();
+        int X = 0, Y = 0;
+        switch (op) {
+            case "Sebastian":
+                X = 1;
+                Y = 5;
+                break;
+            case "Jaime":
+                X = 6;
+                Y = 10;
+                break;
+            case "Esteban":
+                X = 11;
+                Y = 15;
+                break;
+            case "Perkins":
+                X = 16;
+                Y = 20;
+                break;
+
+        }
+        for (int i = X; i <= Y; i++) {
+            m.addItem(i + "");
+        }
+    }//GEN-LAST:event_cActionPerformed
     public void run() {
         Thread ct = Thread.currentThread();
         while (ct == h1) {
@@ -698,14 +771,13 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton back;
     private javax.swing.JButton back1;
     private javax.swing.JButton backC;
+    private javax.swing.JComboBox<String> c;
     private javax.swing.JSpinner cant;
     private javax.swing.JButton cocina;
     private javax.swing.JButton del;
     private javax.swing.JButton end;
     private javax.swing.JButton factura;
     private javax.swing.JLabel image;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -716,6 +788,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbHora;
+    private javax.swing.JComboBox<String> m;
     private javax.swing.JList<String> menu;
     private javax.swing.JButton mesero;
     private javax.swing.JButton pedido;

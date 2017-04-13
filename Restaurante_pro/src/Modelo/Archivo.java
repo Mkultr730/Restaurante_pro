@@ -33,11 +33,6 @@ public class Archivo {
         this.venta = venta;
     }
 
-    public int Prueba(int n) {
-        n = n + 1;
-        return n;
-    }
-
     public Archivo ReadFile(Archivo ptrF) throws FileNotFoundException, IOException {
         File archivo = new File("Menu.txt");
         FileReader fr = new FileReader(archivo);
@@ -60,6 +55,7 @@ public class Archivo {
                     p.link = u;
                 }
             }
+            br.close();
             return ptrF;
         }
     }
@@ -68,13 +64,18 @@ public class Archivo {
         while(q != null){
             Plato p = ptr.plato;
             while(p != null){
-                if (p.getNombre().equals(q.nombre)) {
-                    q.venta = q.venta + p.getCantidad();
+                if (p.nombre.equals(q.nombre)) {
+                    q.venta = q.venta + p.cantidad;
                 }
-                p = p.getLink();
+                p = p.link;
             }
             q = q.link;
         }
+        return ptrF;
+    }
+    
+    public Archivo UpdateFile(Archivo ptrF){
+        
         return ptrF;
     }
     
@@ -95,6 +96,7 @@ public class Archivo {
                 }
             }
         }
+        br.close();
         return false;
     }
 }

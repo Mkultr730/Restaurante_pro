@@ -15,7 +15,9 @@ public class Pedido {
     public String mesa;
     public Plato plato;
     public boolean estado;
-    public Date hora;
+    public int hora;
+    public int minuto;
+    public int segundo;
     public Pedido link;
 
     public Pedido(String mesa, Plato plato) {

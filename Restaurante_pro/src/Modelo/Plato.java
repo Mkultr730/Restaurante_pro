@@ -11,57 +11,17 @@ package Modelo;
  */
 public final class Plato {
 
-    private String nombre;
-    private double precio;
-    private int cantidad;
-    private String mesa;
-    private Plato link;
+    public String nombre;
+    public double precio;
+    public int cantidad;
+    public Plato link = null;
 
-    public Plato(String nombre, double precio, int cantidad, String mesa) {
-        setNombre(nombre);
-        setPrecio(precio);
-        setCantidad(cantidad);
-        setMesa(mesa); 
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
+    public Plato(String nombre, double precio, int cantidad) {
         this.nombre = nombre;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 
-    public String getMesa() {
-        return mesa;
-    }
-
-    public void setMesa(String mesa) {
-        this.mesa = mesa;
-    }
-
-    public Plato getLink() {
-        return link;
-    }
-
-    public void setLink(Plato link) {
-        this.link = link;
-    }
+    
     
 }

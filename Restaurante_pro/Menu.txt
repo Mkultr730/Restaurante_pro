@@ -10,7 +10,7 @@ Gaseosa,3000,Bebidas,0
 Agua,2500,Bebidas,0
 Malteada,5000,Bebidas,0
 Te,4000,Bebidas,0
-Cheese Cake de Guayaba,10000,Postres,0
+Cheese Cake de Guayaba,10000,Postres,0,azucar:3
 Profiteroles,7000,Postres,0
 Flan Napolitano,11000,Postres,0
 Mousse de Chocolate,12000,Postres,0
