@@ -6,6 +6,7 @@
 package Vista;
 
 import Modelo.Archivo;
+import Modelo.Pedido;
 import Modelo.Plato;
 import java.io.*;
 import java.util.*;
@@ -29,6 +30,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
      * Creates new form Principal
      */
     public Archivo ptrF = null;
+    public Pedido ptr2 = null;
     public Archivo a = new Archivo("", 0, "", 0);
 
     public Principal() throws IOException {
@@ -63,6 +65,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         factura = new javax.swing.JButton();
         pedido = new javax.swing.JButton();
         E_pedido = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         FondoM = new javax.swing.JLabel();
         Pedido = new javax.swing.JFrame();
         del = new javax.swing.JButton();
@@ -88,7 +91,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         Fondo = new javax.swing.JLabel();
         Cocina = new javax.swing.JFrame();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablacocina = new javax.swing.JTable();
         timeC = new javax.swing.JButton();
         see = new javax.swing.JButton();
         end = new javax.swing.JButton();
@@ -131,6 +134,17 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         E_pedido.setBorder(null);
         Meseros.getContentPane().add(E_pedido);
         E_pedido.setBounds(200, 120, 150, 50);
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Volver");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        Meseros.getContentPane().add(jButton1);
+        jButton1.setBounds(200, 200, 150, 30);
 
         FondoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MeseroP.png"))); // NOI18N
         Meseros.getContentPane().add(FondoM);
@@ -213,11 +227,9 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         Pedido.getContentPane().add(back);
         back.setBounds(730, 370, 80, 30);
 
-        m.setBackground(new java.awt.Color(255, 255, 255));
         Pedido.getContentPane().add(m);
-        m.setBounds(720, 240, 90, 26);
+        m.setBounds(720, 240, 90, 20);
 
-        c.setBackground(new java.awt.Color(255, 255, 255));
         c.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sebastian", "Jaime", "Esteban", "Perkins" }));
         c.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,11 +241,11 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel2.setText("Camarero");
         Pedido.getContentPane().add(jLabel2);
-        jLabel2.setBounds(570, 210, 70, 16);
+        jLabel2.setBounds(570, 210, 70, 14);
 
         jLabel4.setText("Mesa");
         Pedido.getContentPane().add(jLabel4);
-        jLabel4.setBounds(720, 220, 41, 16);
+        jLabel4.setBounds(720, 220, 41, 14);
 
         Fondop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoP.png"))); // NOI18N
         Pedido.getContentPane().add(Fondop);
@@ -266,7 +278,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         cant.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         Menu.getContentPane().add(cant);
-        cant.setBounds(690, 600, 70, 28);
+        cant.setBounds(690, 600, 70, 20);
 
         menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -280,9 +292,8 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel1.setText("Cantidad");
         Menu.getContentPane().add(jLabel1);
-        jLabel1.setBounds(690, 580, 70, 16);
+        jLabel1.setBounds(690, 580, 70, 14);
 
-        tipo.setBackground(new java.awt.Color(255, 255, 255));
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Platillos", "Bebidas", "Postres" }));
         tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,7 +313,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         Cocina.setResizable(false);
         Cocina.getContentPane().setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablacocina.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -325,10 +336,10 @@ public class Principal extends javax.swing.JFrame implements Runnable {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(1).setMinWidth(70);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(70);
+        jScrollPane3.setViewportView(tablacocina);
+        if (tablacocina.getColumnModel().getColumnCount() > 0) {
+            tablacocina.getColumnModel().getColumn(1).setMinWidth(70);
+            tablacocina.getColumnModel().getColumn(1).setMaxWidth(70);
         }
 
         Cocina.getContentPane().add(jScrollPane3);
@@ -348,12 +359,22 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         see.setBackground(new java.awt.Color(255, 255, 255));
         see.setText("Ver Pedido");
         see.setBorder(null);
+        see.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seeActionPerformed(evt);
+            }
+        });
         Cocina.getContentPane().add(see);
         see.setBounds(460, 210, 100, 40);
 
         end.setBackground(new java.awt.Color(255, 255, 255));
         end.setText("Terminado");
         end.setBorder(null);
+        end.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                endActionPerformed(evt);
+            }
+        });
         Cocina.getContentPane().add(end);
         end.setBounds(580, 210, 90, 40);
 
@@ -368,13 +389,12 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         Cocina.getContentPane().add(backC);
         backC.setBounds(480, 340, 70, 40);
 
-        jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
         Cocina.getContentPane().add(jComboBox3);
         jComboBox3.setBounds(460, 170, 100, 30);
 
         jLabel3.setText("N. Mesa");
         Cocina.getContentPane().add(jLabel3);
-        jLabel3.setBounds(460, 150, 60, 16);
+        jLabel3.setBounds(460, 150, 60, 14);
 
         FondoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CocinaP.png"))); // NOI18N
         Cocina.getContentPane().add(FondoC);
@@ -613,36 +633,59 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private void acepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acepActionPerformed
         Plato ptr = null;
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-//        int mesa = Integer.parseInt(m.getSelectedItem().toString());
-        int n = model.getRowCount();
-        for (int i = 0; i < n; i++) {
-            String nombre = model.getValueAt(i, 0).toString();
-            int cantidad = Integer.parseInt(model.getValueAt(i, 1).toString());
-            double precio = Double.parseDouble(model.getValueAt(i, 2).toString());
-            System.out.println(nombre + ":" + cantidad + ":" + precio);
-            Plato q = new Plato(nombre, precio, cantidad);
-            if (ptr == null) {
-                ptr = q;
-            } else {
-                Plato s = ptr;
-                while (s.link != null) {
-                    s = s.link;
+        if (m.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione una mesa");
+        } else {
+            String mesa = m.getSelectedItem().toString();
+            Pedido o = ptr2;
+            int sw = 0;
+            while (o != null && sw == 0) {
+                if (o.mesa.equals(mesa)) {
+                    JOptionPane.showMessageDialog(null, "La mesa seleccionda esta ocupada por favor seleccione otra");
+                    sw = 1;
                 }
-                s.link = q;
+                o = o.link;
+            }
+            if (sw == 0) {
+                int n = model.getRowCount();
+                for (int i = 0; i < n; i++) {
+                    String nombre = model.getValueAt(i, 0).toString();
+                    int cantidad = Integer.parseInt(model.getValueAt(i, 1).toString());
+                    double precio = Double.parseDouble(model.getValueAt(i, 2).toString());
+                    System.out.println(nombre + ":" + cantidad + ":" + precio);
+                    Plato q = new Plato(nombre, precio, cantidad);
+                    if (ptr == null) {
+                        ptr = q;
+                    } else {
+                        Plato s = ptr;
+                        while (s.link != null) {
+                            s = s.link;
+                        }
+                        s.link = q;
+                    }
+                }
+                int hora, minutos, segundos;
+                Calendar c = new GregorianCalendar();
+                hora = c.get(Calendar.HOUR_OF_DAY);
+                minutos = c.get(Calendar.MINUTE);
+                segundos = c.get(Calendar.SECOND);
+                Pedido f = new Pedido(mesa, ptr, hora, minutos, segundos);
+                if (ptr2 == null) {
+                    ptr2 = f;
+                } else {
+                    Pedido z = ptr2;
+                    while (z.link != null) {
+                        z = z.link;
+                    }
+                    z.link = f;
+                }
+                jComboBox3.addItem(f.mesa);
+                JOptionPane.showMessageDialog(null, "Su pedido fue hecho con exito");
+                Pedido.setVisible(false);
+                this.setVisible(true);
+                model.setRowCount(0);
             }
         }
-        while(ptr != null){
-            System.out.println(ptr.nombre);
-            ptr = ptr.link;
-        }
-
-//        int hora, minutos, segundos;
-//        Calendar c = new GregorianCalendar();
-//        hora = c.get(Calendar.HOUR_OF_DAY);
-//        minutos = c.get(Calendar.MINUTE);
-//        segundos = c.get(Calendar.SECOND);
-//        Pedido p = new Pedido();
-
     }//GEN-LAST:event_acepActionPerformed
 
     private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
@@ -680,6 +723,49 @@ public class Principal extends javax.swing.JFrame implements Runnable {
             m.addItem(i + "");
         }
     }//GEN-LAST:event_cActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Meseros.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void seeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeActionPerformed
+        // TODO add your handling code here:
+        if (jComboBox3.getSelectedItem() != null) {
+            String mesa = jComboBox3.getSelectedItem().toString();
+            Pedido r = ptr2;
+            DefaultTableModel model = (DefaultTableModel) tablacocina.getModel();
+            model.setRowCount(0);
+            while (r != null) {
+                if (r.mesa.equals(mesa)) {
+                    model.addRow(new Object[]{r.plato.nombre, r.plato.cantidad});
+                }
+                r = r.link;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay ningun pedido seleccionado");
+        }
+    }//GEN-LAST:event_seeActionPerformed
+
+    private void endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endActionPerformed
+        // TODO add your handling code here:
+        if (jComboBox3.getSelectedItem() != null) {
+            String mesa = jComboBox3.getSelectedItem().toString();
+            Pedido u = ptr2;
+            while (u != null) {
+                if (u.mesa.equals(mesa)) {
+                    u.estado = true;
+                }
+                u = u.link;
+            }
+            jComboBox3.removeItem(mesa);
+            DefaultTableModel model = (DefaultTableModel) tablacocina.getModel();
+            model.setRowCount(0);
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay ningun pedido seleccionado");
+        }
+    }//GEN-LAST:event_endActionPerformed
     public void run() {
         Thread ct = Thread.currentThread();
         while (ct == h1) {
@@ -778,6 +864,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton end;
     private javax.swing.JButton factura;
     private javax.swing.JLabel image;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -786,13 +873,13 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbHora;
     private javax.swing.JComboBox<String> m;
     private javax.swing.JList<String> menu;
     private javax.swing.JButton mesero;
     private javax.swing.JButton pedido;
     private javax.swing.JButton see;
+    private javax.swing.JTable tablacocina;
     private javax.swing.JTable table;
     private javax.swing.JButton timeC;
     private javax.swing.JComboBox<String> tipo;

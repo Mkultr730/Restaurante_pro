@@ -20,11 +20,14 @@ public class Pedido {
     public int segundo;
     public Pedido link;
 
-    public Pedido(String mesa, Plato plato) {
+    public Pedido(String mesa, Plato plato, int hora, int minuto, int segundo) {
         this.mesa = mesa;
         this.plato = plato;
         this.estado = false;
-        this.link = null;
+        this.hora = hora;
+        this.minuto = minuto;
+        this.segundo = segundo;
+        this.link = null;    
     }
     
 }
