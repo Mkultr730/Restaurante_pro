@@ -1,5 +1,5 @@
-tomate,30
-cebolla,29
+tomate,28
+cebolla,27
 aceite,20
 sal,20
 azucar,20

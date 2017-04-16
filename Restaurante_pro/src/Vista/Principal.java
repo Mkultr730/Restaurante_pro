@@ -6,6 +6,7 @@
 package Vista;
 
 import Modelo.Archivo;
+import Modelo.Inventario;
 import Modelo.Pedido;
 import Modelo.Plato;
 import java.io.*;
@@ -31,13 +32,13 @@ public class Principal extends javax.swing.JFrame implements Runnable {
      */
     public Archivo ptrF = null;
     public Pedido ptr2 = null;
-    public Archivo a = new Archivo("", 0, "", 0);
+    //   public Inventario ptr = null;
+    public Archivo a = new Archivo("", 0, "", 0, "");
 
     public Principal() throws IOException {
         initComponents();
         h1 = new Thread(this);
         h1.start();
-        ptrF = a.ReadFile(ptrF);
         this.setSize(600, 516);
         this.setLocationRelativeTo(null);
         Time.setSize(534, 217);
@@ -228,7 +229,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         back.setBounds(730, 370, 80, 30);
 
         Pedido.getContentPane().add(m);
-        m.setBounds(720, 240, 90, 20);
+        m.setBounds(720, 240, 90, 22);
 
         c.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sebastian", "Jaime", "Esteban", "Perkins" }));
         c.addActionListener(new java.awt.event.ActionListener() {
@@ -241,11 +242,11 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel2.setText("Camarero");
         Pedido.getContentPane().add(jLabel2);
-        jLabel2.setBounds(570, 210, 70, 14);
+        jLabel2.setBounds(570, 210, 70, 16);
 
         jLabel4.setText("Mesa");
         Pedido.getContentPane().add(jLabel4);
-        jLabel4.setBounds(720, 220, 41, 14);
+        jLabel4.setBounds(720, 220, 41, 16);
 
         Fondop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoP.png"))); // NOI18N
         Pedido.getContentPane().add(Fondop);
@@ -278,7 +279,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         cant.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         Menu.getContentPane().add(cant);
-        cant.setBounds(690, 600, 70, 20);
+        cant.setBounds(690, 600, 70, 22);
 
         menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -292,7 +293,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel1.setText("Cantidad");
         Menu.getContentPane().add(jLabel1);
-        jLabel1.setBounds(690, 580, 70, 14);
+        jLabel1.setBounds(690, 580, 70, 16);
 
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Platillos", "Bebidas", "Postres" }));
         tipo.addActionListener(new java.awt.event.ActionListener() {
@@ -394,7 +395,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel3.setText("N. Mesa");
         Cocina.getContentPane().add(jLabel3);
-        jLabel3.setBounds(460, 150, 60, 14);
+        jLabel3.setBounds(460, 150, 60, 16);
 
         FondoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CocinaP.png"))); // NOI18N
         Cocina.getContentPane().add(FondoC);
@@ -479,13 +480,8 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         Menu.setVisible(true);
         ImageIcon Img = new ImageIcon(getClass().getResource("/Imagenes/nulo.png"));
         image.setIcon(Img);
-        Archivo p = ptrF;
-        while (p != null) {
-            System.out.println(p.nombre);
-            p = p.link;
-        }
     }//GEN-LAST:event_addActionPerformed
-    void lista(Archivo ptrF, String op, int sw) {
+    void lista(String op) {
         DefaultListModel model = new DefaultListModel();
         File archivo = new File("Menu.txt");
         FileReader fr = null;
@@ -501,25 +497,9 @@ public class Principal extends javax.swing.JFrame implements Runnable {
                 String name = st.nextElement().toString();
                 double prec = Double.parseDouble(st.nextElement().toString());
                 String tipo = st.nextElement().toString();
-                int vent = Integer.parseInt(st.nextElement().toString());
-                Archivo u = new Archivo(name, prec, tipo, vent);
-                if (sw == 0) {
-                    if (ptrF == null) {
-                        ptrF = u;
-                    } else {
-                        Archivo p = ptrF;
-                        while (p.link != null) {
-                            p = p.link;
-                        }
-                        p.link = u;
-                    }
-
-                } else {
-                    if (op.equals(tipo)) {
-                        model.addElement(name);
-                    }
+                if (op.equals(tipo)) {
+                    model.addElement(name);
                 }
-
             }
             menu.setModel(model);
         } catch (IOException ex) {
@@ -530,13 +510,13 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         String op = tipo.getSelectedItem().toString();
         switch (op) {
             case "Platillos":
-                lista(null, op, 1);
+                lista(op);
                 break;
             case "Bebidas":
-                lista(null, op, 1);
+                lista(op);
                 break;
             case "Postres":
-                lista(null, op, 1);
+                lista(op);
                 break;
         }
     }//GEN-LAST:event_tipoActionPerformed
@@ -580,7 +560,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_timeCActionPerformed
 
     private void acep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acep1ActionPerformed
-        int cont = 0;
+        Inventario g = new Inventario("", 0);
         int c = Integer.parseInt(cant.getValue().toString());
         String op = menu.getSelectedValue();
         File archivo = new File("Menu.txt");
@@ -609,7 +589,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
                         StringTokenizer nt = new StringTokenizer(st.nextElement().toString(), ":");
                         String ingrediente = nt.nextElement().toString();
                         int cant = Integer.parseInt(nt.nextElement().toString());
-                        sw = a.Inventario(ingrediente, cant, c);
+                        sw = g.Inventario(ingrediente, cant, c, 0);
                     }
                     if (sw == false) {
                         DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -737,9 +717,15 @@ public class Principal extends javax.swing.JFrame implements Runnable {
             Pedido r = ptr2;
             DefaultTableModel model = (DefaultTableModel) tablacocina.getModel();
             model.setRowCount(0);
-            while (r != null) {
+            int sw = 0;
+            while (r != null && sw == 0) {
                 if (r.mesa.equals(mesa)) {
-                    model.addRow(new Object[]{r.plato.nombre, r.plato.cantidad});
+                    sw = 1;
+                    Plato p = r.plato;
+                    while (p != null) {
+                        model.addRow(new Object[]{p.nombre, p.cantidad});
+                        p = p.link;
+                    }
                 }
                 r = r.link;
             }
@@ -749,20 +735,50 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_seeActionPerformed
 
     private void endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endActionPerformed
-        // TODO add your handling code here:
         if (jComboBox3.getSelectedItem() != null) {
+            Inventario s = null;
             String mesa = jComboBox3.getSelectedItem().toString();
             Pedido u = ptr2;
-            while (u != null) {
+            boolean sw = false;
+            while (u != null && sw == false) {
                 if (u.mesa.equals(mesa)) {
+                    sw = true;
                     u.estado = true;
+                    Plato p = u.plato;
+                    try {
+                        ptrF = a.ReadFile(null);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Archivo h = ptrF;
+                    ptrF = a.UpdateListFile(h, u);
+                    try {
+                        a.WriteFile(ptrF);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Inventario a = new Inventario("", 0);
+                    Inventario ptr = null;
+                    try {
+                        ptr = a.readIn();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Inventario q = ptr;
+                    ptr = a.UpdateListIn(ptrF, q, p);
+                    try {
+                        a.WriteIn(ptr);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
                 }
                 u = u.link;
             }
             jComboBox3.removeItem(mesa);
             DefaultTableModel model = (DefaultTableModel) tablacocina.getModel();
             model.setRowCount(0);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No hay ningun pedido seleccionado");
         }
     }//GEN-LAST:event_endActionPerformed
