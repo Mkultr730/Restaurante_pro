@@ -15,6 +15,7 @@ public class Pedido {
     public String mesa;
     public Plato plato;
     public boolean estado;
+    public boolean entregado;
     public int hora;
     public int minuto;
     public int segundo;
@@ -23,6 +24,7 @@ public class Pedido {
     public Pedido(String mesa, Plato plato, int hora, int minuto, int segundo) {
         this.mesa = mesa;
         this.plato = plato;
+        this.estado = false;
         this.estado = false;
         this.hora = hora;
         this.minuto = minuto;

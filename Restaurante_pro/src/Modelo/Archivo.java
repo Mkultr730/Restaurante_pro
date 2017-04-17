@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import Vista.Principal;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,9 +13,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author Laboratorio
@@ -86,13 +82,11 @@ public class Archivo {
     
     public void WriteFile(Archivo ptrF) throws IOException{
         File archivo = new File("Menu.txt");
-        File receta = new File("Receta.txt");
         FileWriter fw = new FileWriter(archivo);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write("");
         Archivo p = ptrF;
         String line;
-        String c;
         while(p != null){
             line = p.nombre+","+p.precio+","+p.tipo+","+p.venta+","+p.receta;
             bw.write(line);

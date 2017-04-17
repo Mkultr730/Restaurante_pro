@@ -20,8 +20,5 @@ public final class Plato {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
-    }
-
-    
-    
+    }       
 }
