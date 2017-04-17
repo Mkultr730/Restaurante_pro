@@ -91,7 +91,7 @@ public class Inventario {
                         Inventario i = ptr;
                         while(i != null){
                             if (i.ingrediente.equals(ingrediente)) {
-                                i.existencias -= cantidad;
+                                i.existencias -= cantidad*h.cantidad;
                             }
                             i = i.link; 
                         }
