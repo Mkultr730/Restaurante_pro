@@ -22,11 +22,13 @@ public class Inventario {
 
     public String ingrediente;
     public int existencias;
+    public int venta;
     public Inventario link;
 
-    public Inventario(String ingrediente, int existencias) {
+    public Inventario(String ingrediente, int existencias, int venta) {
         this.ingrediente = ingrediente;
         this.existencias = existencias;
+        this.venta = venta;
         this.link = null;
     }
 
@@ -40,7 +42,8 @@ public class Inventario {
             StringTokenizer st = new StringTokenizer(c, ",");
             String nombre = st.nextElement().toString();
             int cant = Integer.parseInt(st.nextElement().toString());
-            Inventario p = new Inventario(nombre, cant);
+            int venta = Integer.parseInt(st.nextElement().toString());
+            Inventario p = new Inventario(nombre, cant, venta);
             if (ptr == null) {
                 ptr = p;
             } else {
@@ -92,6 +95,7 @@ public class Inventario {
                         while(i != null){
                             if (i.ingrediente.equals(ingrediente)) {
                                 i.existencias -= cantidad*h.cantidad;
+                                i.venta +=cantidad*h.cantidad;
                             }
                             i = i.link; 
                         }
@@ -112,7 +116,7 @@ public class Inventario {
         Inventario p = ptr;
         String line;
         while(p != null){
-            line = p.ingrediente+","+p.existencias;
+            line = p.ingrediente+","+p.existencias+","+p.venta;
             bw.write(line);
             bw.newLine();
             p = p.link;

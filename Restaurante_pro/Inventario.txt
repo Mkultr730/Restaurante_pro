@@ -1,8 +1,8 @@
-tomate,18
-cebolla,18
-aceite,30
-sal,30
-azucar,27
-queso,30
-tortillas,30
-huevos,30
+tomate,28,2
+aceite,30,0
+cebolla,28,2
+sal,30,0
+azucar,30,0
+queso,30,0
+tortillas,30,0
+huevos,30,0
