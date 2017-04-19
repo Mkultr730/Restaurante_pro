@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Laboratorio
  */
 public class Pedido {
+    public Camarero camarero;
     public String mesa;
     public Plato plato;
     public boolean estado;
@@ -21,7 +22,8 @@ public class Pedido {
     public int segundo;
     public Pedido link;
 
-    public Pedido(String mesa, Plato plato, int hora, int minuto, int segundo) {
+    public Pedido(Camarero camarero, String mesa, Plato plato, int hora, int minuto, int segundo) {
+        this.camarero = camarero;
         this.mesa = mesa;
         this.plato = plato;
         this.estado = false;
@@ -31,5 +33,6 @@ public class Pedido {
         this.segundo = segundo;
         this.link = null;    
     }
+
     
 }

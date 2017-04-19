@@ -5,17 +5,12 @@
  */
 package Vista;
 
-import Modelo.Archivo;
-import Modelo.Inventario;
-import Modelo.Pedido;
-import Modelo.Plato;
+import Modelo.*;
 import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,6 +28,8 @@ public class Principal extends javax.swing.JFrame implements Runnable {
      */
     public Archivo ptrF = null;
     public Pedido ptr2 = null;
+    public Camarero ptr3 = null;
+    public Mesa ptr4 = null;
     public Archivo a = new Archivo("", 0, "", 0, "");
 
     public Principal() throws IOException {
@@ -82,7 +79,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         acep = new javax.swing.JButton();
         back = new javax.swing.JButton();
         m = new javax.swing.JComboBox<>();
-        c = new javax.swing.JComboBox<>();
+        camar = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Fondop = new javax.swing.JLabel();
@@ -280,14 +277,14 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         Pedido.getContentPane().add(m);
         m.setBounds(720, 240, 90, 22);
 
-        c.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sebastian", "Jaime", "Esteban", "Perkins" }));
-        c.addActionListener(new java.awt.event.ActionListener() {
+        camar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sebastian", "Jaime", "Esteban", "Perkins" }));
+        camar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cActionPerformed(evt);
+                camarActionPerformed(evt);
             }
         });
-        Pedido.getContentPane().add(c);
-        c.setBounds(560, 230, 130, 40);
+        Pedido.getContentPane().add(camar);
+        camar.setBounds(560, 230, 130, 40);
 
         jLabel2.setText("Camarero");
         Pedido.getContentPane().add(jLabel2);
@@ -924,7 +921,6 @@ public class Principal extends javax.swing.JFrame implements Runnable {
                     String nombre = model.getValueAt(i, 0).toString();
                     int cantidad = Integer.parseInt(model.getValueAt(i, 1).toString());
                     double precio = Double.parseDouble(model.getValueAt(i, 2).toString());
-                    System.out.println(nombre + ":" + cantidad + ":" + precio);
                     Plato q = new Plato(nombre, precio, cantidad);
                     if (ptr == null) {
                         ptr = q;
@@ -936,26 +932,54 @@ public class Principal extends javax.swing.JFrame implements Runnable {
                         s.link = q;
                     }
                 }
-                int hora, minutos, segundos;
-                Calendar c = new GregorianCalendar();
-                hora = c.get(Calendar.HOUR_OF_DAY);
-                minutos = c.get(Calendar.MINUTE);
-                segundos = c.get(Calendar.SECOND);
-                Pedido f = new Pedido(mesa, ptr, hora, minutos, segundos);
-                if (ptr2 == null) {
-                    ptr2 = f;
+                String cam = camar.getSelectedItem().toString();
+                if (ptr3 == null) {
+                    Camarero camarero = new Camarero(cam, 1);
+                    ptr3 = camarero;
                 } else {
-                    Pedido z = ptr2;
-                    while (z.link != null) {
-                        z = z.link;
+                    Camarero s = ptr3;
+                    while ((s.link != null) && !(s.nombre.equals(cam))) {
+                        s = s.link;
                     }
-                    z.link = f;
+                    if (!s.nombre.equals(cam)) {
+                        Camarero camarero = new Camarero(cam, 1);
+                        s.link = camarero;
+                    } else {
+                        s.venta = s.venta + 1;
+                    }
                 }
-                jComboBox3.addItem(f.mesa);
+                Camarero p = null;
+                p = ptr3;
+                int sw2 = 0;
+                while (p != null && sw2 == 0) {
+                    if (p.nombre.equals(cam)) {
+                        sw2 = 1;
+                        Camarero q = p;
+                        int hora, minutos, segundos;
+                        Calendar c = new GregorianCalendar();
+                        hora = c.get(Calendar.HOUR_OF_DAY);
+                        minutos = c.get(Calendar.MINUTE);
+                        segundos = c.get(Calendar.SECOND);
+                        Pedido f = new Pedido(q, mesa, ptr, hora, minutos, segundos);
+                        if (ptr2 == null) {
+                            ptr2 = f;
+                        } else {
+                            Pedido z = ptr2;
+                            while (z.link != null) {
+                                z = z.link;
+                            }
+                            z.link = f;
+                        }
+                        jComboBox3.addItem(f.mesa);
+                    }
+                    p = p.link;
+                }
+
                 JOptionPane.showMessageDialog(null, "Su pedido fue hecho con exito");
                 Pedido.setVisible(false);
                 this.setVisible(true);
                 model.setRowCount(0);
+
             }
         }
     }//GEN-LAST:event_acepActionPerformed
@@ -968,9 +992,9 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         }
     }//GEN-LAST:event_delActionPerformed
 
-    private void cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActionPerformed
+    private void camarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camarActionPerformed
         m.removeAllItems();
-        String op = c.getSelectedItem().toString();
+        String op = camar.getSelectedItem().toString();
         int X = 0, Y = 0;
         switch (op) {
             case "Sebastian":
@@ -994,7 +1018,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         for (int i = X; i <= Y; i++) {
             m.addItem(i + "");
         }
-    }//GEN-LAST:event_cActionPerformed
+    }//GEN-LAST:event_camarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -1119,8 +1143,64 @@ public class Principal extends javax.swing.JFrame implements Runnable {
             String op = nmesa.getSelectedItem().toString();
             Pedido p = ptr2;
             int sw = 0;
+            String nombre;
+            if (Integer.parseInt(op) <= 5) {
+                nombre = "Sebastian";
+            } else if (Integer.parseInt(op) > 5 && Integer.parseInt(op) <= 10) {
+                nombre = "Jaime";
+            } else if (Integer.parseInt(op) > 10 && Integer.parseInt(op) <= 15) {
+                nombre = "Esteban";
+            } else {
+                nombre = "Perkins";
+            }
+            Camarero c = ptr3;
+            Camarero el = null;
+            while (c != null) {
+                if (c.nombre.equals(nombre)) {
+                    el = c;
+                }
+                c = c.link;
+            }
             while (p != null && sw == 0) {
                 if (p.mesa.equals(op)) {
+                    if (ptr4 == null) {
+                        Mesa mesa = new Mesa(op, el, p);
+                        ptr4 = mesa;
+                    } else {
+                        Mesa s = ptr4;
+                        while ((s.link != null) && !(s.codigo.equals(op))) {
+                            s = s.link;
+                        }
+                        if (!s.codigo.equals(op)) {
+                            Mesa mesa = new Mesa(op, el, p);
+                            s.link = mesa;
+                        } else {
+                            Pedido temp = s.venta;
+                            while (temp.link != null) {
+                                temp = temp.link;
+                            }
+                            temp.link = p;
+                        }
+                    }
+                    Mesa g = ptr4;
+                    int cont = 1;
+                    while(g != null){
+                        System.out.println("Mesa " + g.codigo);
+                        Pedido k = g.venta;
+                        int  cont2 = 1;
+                        while(k != null){
+                            System.out.println("Pedido" + cont2);
+                            Plato f = k.plato;
+                            while(f != null){
+                                System.out.println(f.nombre + " : " + f.cantidad);
+                                f = f.link;
+                            }
+                            k = k.link;
+                            cont2 += 1;
+                        }
+                        cont += 1;
+                        g = g.link;
+                    }
                     sw = 1;
                     Plato q = p.plato;
                     while (q != null) {
@@ -1157,18 +1237,28 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         Pedido p = ptr2;
         Pedido antp = null;
         String mesa = nmesa.getSelectedItem().toString();
-        while (!(p.mesa.equals(mesa)) && p != null) {
-            antp = p;
-            p = p.link;
-        }
-        if (p.mesa.equals(mesa)) {
-            if (p == ptr2) {
-                ptr2 = p.link;
-            } else {
-                antp.link = p.link;
+        if (Integer.parseInt(mesa) != -1) {
+            while (!(p.mesa.equals(mesa)) && p != null) {
+                antp = p;
+                p = p.link;
             }
-            p.link = null;
+            if (p.mesa.equals(mesa)) {
+                if (p == ptr2) {
+                    ptr2 = p.link;
+                } else {
+                    antp.link = p.link;
+                }
+                p.link = null;
+            }
         }
+        DefaultTableModel model = (DefaultTableModel) TablaFactura.getModel();
+        model.setRowCount(0);
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        nmesa.removeItem(mesa);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -1343,7 +1433,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton back;
     private javax.swing.JButton back1;
     private javax.swing.JButton backC;
-    private javax.swing.JComboBox<String> c;
+    private javax.swing.JComboBox<String> camar;
     private javax.swing.JButton can;
     private javax.swing.JSpinner cant;
     private javax.swing.JButton cocina;

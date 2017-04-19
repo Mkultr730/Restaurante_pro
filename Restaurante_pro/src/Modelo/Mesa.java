@@ -10,14 +10,18 @@ package Modelo;
  * @author Usuario
  */
 public class Mesa {
-    public int codigo;
+    public String codigo;
     public Camarero camarero;
-    public int venta;
+    public Pedido venta;
+    public Mesa link;
 
-    public Mesa(int codigo, Camarero camarero, int venta) {
+    public Mesa(String codigo, Camarero camarero, Pedido venta) {
         this.codigo = codigo;
         this.camarero = camarero;
         this.venta = venta;
+        this.link = null;
     }
+    
+  
     
 }
