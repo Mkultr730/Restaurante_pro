@@ -2,7 +2,7 @@ tomate,18
 cebolla,18
 aceite,30
 sal,30
-azucar,30
+azucar,27
 queso,30
 tortillas,30
 huevos,30

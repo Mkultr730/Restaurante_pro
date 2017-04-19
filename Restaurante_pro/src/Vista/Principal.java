@@ -139,6 +139,21 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         ag = new javax.swing.JButton();
         can = new javax.swing.JButton();
         fondoL = new javax.swing.JLabel();
+        Administracion = new javax.swing.JFrame();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
+        jButton8 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        ResumenMesas = new javax.swing.JFrame();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tablamesas = new javax.swing.JTable();
+        jButton9 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         admin = new javax.swing.JButton();
         cocina = new javax.swing.JButton();
         mesero = new javax.swing.JButton();
@@ -275,7 +290,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         back.setBounds(730, 370, 80, 30);
 
         Pedido.getContentPane().add(m);
-        m.setBounds(720, 240, 90, 22);
+        m.setBounds(720, 240, 90, 20);
 
         camar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sebastian", "Jaime", "Esteban", "Perkins" }));
         camar.addActionListener(new java.awt.event.ActionListener() {
@@ -288,11 +303,11 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel2.setText("Camarero");
         Pedido.getContentPane().add(jLabel2);
-        jLabel2.setBounds(570, 210, 70, 16);
+        jLabel2.setBounds(570, 210, 70, 14);
 
         jLabel4.setText("Mesa");
         Pedido.getContentPane().add(jLabel4);
-        jLabel4.setBounds(720, 220, 41, 16);
+        jLabel4.setBounds(720, 220, 41, 14);
 
         Fondop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoP.png"))); // NOI18N
         Pedido.getContentPane().add(Fondop);
@@ -325,7 +340,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         cant.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         Menu.getContentPane().add(cant);
-        cant.setBounds(690, 600, 70, 22);
+        cant.setBounds(690, 600, 70, 20);
 
         menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -339,7 +354,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel1.setText("Cantidad");
         Menu.getContentPane().add(jLabel1);
-        jLabel1.setBounds(690, 580, 70, 16);
+        jLabel1.setBounds(690, 580, 70, 14);
 
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Platillos", "Bebidas", "Postres" }));
         tipo.addActionListener(new java.awt.event.ActionListener() {
@@ -441,7 +456,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel3.setText("N. Mesa");
         Cocina.getContentPane().add(jLabel3);
-        jLabel3.setBounds(460, 150, 60, 16);
+        jLabel3.setBounds(460, 150, 60, 14);
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Jefe de cocina");
@@ -570,7 +585,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel6.setText("IVA");
         Factura.getContentPane().add(jLabel6);
-        jLabel6.setBounds(600, 280, 20, 16);
+        jLabel6.setBounds(600, 280, 17, 14);
 
         jTextField2.setEditable(false);
         Factura.getContentPane().add(jTextField2);
@@ -578,7 +593,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel7.setText("Propina");
         Factura.getContentPane().add(jLabel7);
-        jLabel7.setBounds(600, 330, 70, 16);
+        jLabel7.setBounds(600, 330, 70, 14);
 
         jTextField3.setEditable(false);
         Factura.getContentPane().add(jTextField3);
@@ -586,7 +601,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel8.setText("Total Neto");
         Factura.getContentPane().add(jLabel8);
-        jLabel8.setBounds(600, 390, 60, 16);
+        jLabel8.setBounds(600, 390, 60, 14);
 
         jTextField4.setEditable(false);
         Factura.getContentPane().add(jTextField4);
@@ -636,7 +651,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel9.setText("N° de mesa");
         Factura.getContentPane().add(jLabel9);
-        jLabel9.setBounds(600, 150, 90, 16);
+        jLabel9.setBounds(600, 150, 90, 14);
 
         fondoF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FacturaP.png"))); // NOI18N
         Factura.getContentPane().add(fondoF);
@@ -646,7 +661,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel11.setText("Usuario:");
         Login.getContentPane().add(jLabel11);
-        jLabel11.setBounds(200, 380, 60, 16);
+        jLabel11.setBounds(200, 380, 60, 14);
 
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -658,7 +673,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel10.setText("Contraseña: ");
         Login.getContentPane().add(jLabel10);
-        jLabel10.setBounds(190, 450, 100, 16);
+        jLabel10.setBounds(190, 450, 100, 14);
         Login.getContentPane().add(pass);
         pass.setBounds(190, 470, 220, 30);
 
@@ -682,11 +697,128 @@ public class Principal extends javax.swing.JFrame implements Runnable {
             }
         });
         Login.getContentPane().add(can);
-        can.setBounds(230, 580, 120, 17);
+        can.setBounds(230, 580, 120, 15);
 
         fondoL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/loginP.png"))); // NOI18N
         Login.getContentPane().add(fondoL);
         fondoL.setBounds(0, -20, 720, 720);
+
+        Administracion.getContentPane().setLayout(null);
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Resumen de ventas por mesa");
+        jRadioButton1.setBorder(null);
+        jRadioButton1.setOpaque(false);
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        Administracion.getContentPane().add(jRadioButton1);
+        jRadioButton1.setBounds(30, 120, 170, 30);
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Total ventas del dia");
+        jRadioButton2.setOpaque(false);
+        Administracion.getContentPane().add(jRadioButton2);
+        jRadioButton2.setBounds(30, 160, 130, 23);
+
+        buttonGroup1.add(jRadioButton3);
+        jRadioButton3.setText("Plato mas vendido");
+        jRadioButton3.setOpaque(false);
+        Administracion.getContentPane().add(jRadioButton3);
+        jRadioButton3.setBounds(30, 190, 120, 23);
+
+        buttonGroup1.add(jRadioButton4);
+        jRadioButton4.setText("Camarero que gestiono mas numero de mesas");
+        jRadioButton4.setOpaque(false);
+        Administracion.getContentPane().add(jRadioButton4);
+        jRadioButton4.setBounds(30, 220, 250, 23);
+
+        buttonGroup1.add(jRadioButton5);
+        jRadioButton5.setText("5 alimentos que mas se usan");
+        jRadioButton5.setOpaque(false);
+        Administracion.getContentPane().add(jRadioButton5);
+        jRadioButton5.setBounds(30, 260, 170, 23);
+
+        buttonGroup1.add(jRadioButton6);
+        jRadioButton6.setText("5 alimentos que menos se usan");
+        jRadioButton6.setOpaque(false);
+        Administracion.getContentPane().add(jRadioButton6);
+        jRadioButton6.setBounds(30, 300, 180, 23);
+
+        jButton8.setText("Aceptar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        Administracion.getContentPane().add(jButton8);
+        jButton8.setBounds(360, 180, 71, 23);
+
+        jButton10.setText("Volver");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        Administracion.getContentPane().add(jButton10);
+        jButton10.setBounds(360, 250, 63, 23);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AdminP.png"))); // NOI18N
+        Administracion.getContentPane().add(jLabel12);
+        jLabel12.setBounds(0, -10, 580, 440);
+
+        ResumenMesas.getContentPane().setLayout(null);
+
+        tablamesas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1",  new Double(0.0)},
+                {"2",  new Double(0.0)},
+                {"3",  new Double(0.0)},
+                {"4",  new Double(0.0)},
+                {"5",  new Double(0.0)},
+                {"6",  new Double(0.0)},
+                {"7",  new Double(0.0)},
+                {"8",  new Double(0.0)},
+                {"9",  new Double(0.0)},
+                {"10",  new Double(0.0)},
+                {"11",  new Double(0.0)},
+                {"12",  new Double(0.0)},
+                {"13",  new Double(0.0)},
+                {"14",  new Double(0.0)},
+                {"15",  new Double(0.0)},
+                {"16",  new Double(0.0)},
+                {"17",  new Double(0.0)},
+                {"18",  new Double(0.0)},
+                {"19",  new Double(0.0)},
+                {"20",  new Double(0.0)}
+            },
+            new String [] {
+                "N° de mesa", "Total vendido"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tablamesas);
+
+        ResumenMesas.getContentPane().add(jScrollPane6);
+        jScrollPane6.setBounds(0, 0, 380, 350);
+
+        jButton9.setText("Aceptar");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        ResumenMesas.getContentPane().add(jButton9);
+        jButton9.setBounds(420, 90, 71, 23);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante La Prosperidad");
@@ -1184,14 +1316,14 @@ public class Principal extends javax.swing.JFrame implements Runnable {
                     }
                     Mesa g = ptr4;
                     int cont = 1;
-                    while(g != null){
+                    while (g != null) {
                         System.out.println("Mesa " + g.codigo);
                         Pedido k = g.venta;
-                        int  cont2 = 1;
-                        while(k != null){
+                        int cont2 = 1;
+                        while (k != null) {
                             System.out.println("Pedido" + cont2);
                             Plato f = k.plato;
-                            while(f != null){
+                            while (f != null) {
                                 System.out.println(f.nombre + " : " + f.cantidad);
                                 f = f.link;
                             }
@@ -1236,6 +1368,13 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Pedido p = ptr2;
         Pedido antp = null;
+        Mesa x = ptr4;
+        while (x != null) {
+            if (x.codigo.equals(nmesa.getSelectedItem().toString())) {
+                x.total += Double.parseDouble(jTextField4.getText());
+            }
+            x = x.link;
+        }
         String mesa = nmesa.getSelectedItem().toString();
         if (Integer.parseInt(mesa) != -1) {
             while (!(p.mesa.equals(mesa)) && p != null) {
@@ -1328,6 +1467,8 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private void agActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agActionPerformed
         if (user.getText().equals("yo") && pass.getText().equals("1234")) {
             System.out.println("Oka");
+            Login.setVisible(false);
+            Administracion.setVisible(true);
         } else {
             if (!user.getText().equals("yo")) {
                 JOptionPane.showMessageDialog(null, "Usuario Invalido", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -1336,6 +1477,88 @@ public class Principal extends javax.swing.JFrame implements Runnable {
             }
         }
     }//GEN-LAST:event_agActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tablamesas.getModel();
+        Mesa s;
+        String t;
+        if (jRadioButton1.isSelected()) {
+            Administracion.setVisible(false);
+            ResumenMesas.setVisible(true);
+            s = ptr4;
+            while (s != null) {
+                for (int i = 1; i < 21; i++) {
+                    t = i + "";
+                    if (s.codigo.equals(t)) {
+                        model.setValueAt(s.total, (i - 1), 1);
+                    }
+                }
+                s = s.link;
+            }
+        } else {
+            if (jRadioButton2.isSelected()) {
+                Double Total = 0.0;
+                s = ptr4;
+                while (s != null) {
+                    for (int i = 1; i < 21; i++) {
+                        t = i + "";
+                        if (s.codigo.equals(t)) {
+                            model.setValueAt(s.total, (i - 1), 1);
+                            Total+=s.total;
+                        }
+                    }
+                    s = s.link;
+                }
+                JOptionPane.showMessageDialog(null, "El total de ventas del dia es:" + Total);
+            }else{
+                if (jRadioButton3.isSelected()) {
+                    Archivo e = ptrF.link;
+                    String nombremayor = ptrF.nombre;
+                    int numeromayor = ptrF.venta;
+                    while(e!=null){
+                        if (e.venta > numeromayor) {
+                            numeromayor = e.venta;
+                            nombremayor = e.nombre;
+                        }
+                        e = e.link;
+                    }
+                    JOptionPane.showMessageDialog(null, "El plato que mas se vendio fue:" + nombremayor);
+                }else{
+                    if (jRadioButton4.isSelected()) {
+                        Camarero g = ptr3.link;
+                        String camareromayor = ptr3.nombre;
+                        int numerodemesas = ptr3.venta;
+                        while(g!=null){
+                        if (g.venta > numerodemesas) {
+                            camareromayor = g.nombre;
+                            numerodemesas = g.venta;
+                        }
+                        g = g.link;
+                        }
+                        JOptionPane.showMessageDialog(null, "El camarero que atendio mas mesas fue:" + camareromayor);
+                    }
+                }
+            }
+        }
+
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        ResumenMesas.setVisible(false);
+        Administracion.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        Administracion.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton10ActionPerformed
     public void run() {
         Thread ct = Thread.currentThread();
         while (ct == h1) {
@@ -1407,6 +1630,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame Administracion;
     private javax.swing.JFrame Cocina;
     private javax.swing.JButton E_pedido;
     private javax.swing.JButton Editar;
@@ -1422,6 +1646,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JFrame Menu;
     private javax.swing.JFrame Meseros;
     private javax.swing.JFrame Pedido;
+    private javax.swing.JFrame ResumenMesas;
     private javax.swing.JTable TablaEstados;
     private javax.swing.JTable TablaFactura;
     private javax.swing.JFrame Time;
@@ -1433,6 +1658,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton back;
     private javax.swing.JButton back1;
     private javax.swing.JButton backC;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> camar;
     private javax.swing.JButton can;
     private javax.swing.JSpinner cant;
@@ -1445,16 +1671,20 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel fondoL;
     private javax.swing.JLabel image;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1463,11 +1693,18 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -1481,6 +1718,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton pedido;
     private javax.swing.JButton see;
     private javax.swing.JTable tablacocina;
+    private javax.swing.JTable tablamesas;
     private javax.swing.JTable table;
     private javax.swing.JButton timeC;
     private javax.swing.JComboBox<String> tipo;

@@ -13,12 +13,14 @@ public class Mesa {
     public String codigo;
     public Camarero camarero;
     public Pedido venta;
+    public double total;
     public Mesa link;
 
     public Mesa(String codigo, Camarero camarero, Pedido venta) {
         this.codigo = codigo;
         this.camarero = camarero;
         this.venta = venta;
+        this.total = 0;
         this.link = null;
     }
     
