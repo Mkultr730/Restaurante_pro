@@ -1,6 +1,6 @@
-tomate,28,2
+tomate,22,8
 aceite,30,0
-cebolla,28,2
+cebolla,22,8
 sal,30,0
 azucar,30,0
 queso,30,0

@@ -299,7 +299,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         back.setBounds(730, 370, 80, 30);
 
         Pedido.getContentPane().add(m);
-        m.setBounds(720, 240, 90, 22);
+        m.setBounds(720, 240, 90, 20);
 
         camar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sebastian", "Jaime", "Esteban", "Perkins" }));
         camar.addActionListener(new java.awt.event.ActionListener() {
@@ -312,11 +312,11 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel2.setText("Camarero");
         Pedido.getContentPane().add(jLabel2);
-        jLabel2.setBounds(570, 210, 70, 16);
+        jLabel2.setBounds(570, 210, 70, 14);
 
         jLabel4.setText("Mesa");
         Pedido.getContentPane().add(jLabel4);
-        jLabel4.setBounds(720, 220, 41, 16);
+        jLabel4.setBounds(720, 220, 41, 14);
 
         Fondop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoP.png"))); // NOI18N
         Pedido.getContentPane().add(Fondop);
@@ -349,7 +349,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         cant.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         Menu.getContentPane().add(cant);
-        cant.setBounds(690, 600, 70, 22);
+        cant.setBounds(690, 600, 70, 20);
 
         menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -363,7 +363,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel1.setText("Cantidad");
         Menu.getContentPane().add(jLabel1);
-        jLabel1.setBounds(690, 580, 70, 16);
+        jLabel1.setBounds(690, 580, 70, 14);
 
         tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Platillos", "Bebidas", "Postres" }));
         tipo.addActionListener(new java.awt.event.ActionListener() {
@@ -465,7 +465,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel3.setText("N. Mesa");
         Cocina.getContentPane().add(jLabel3);
-        jLabel3.setBounds(460, 150, 60, 16);
+        jLabel3.setBounds(460, 150, 60, 14);
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Jefe de cocina");
@@ -608,7 +608,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel6.setText("IVA");
         Factura.getContentPane().add(jLabel6);
-        jLabel6.setBounds(600, 280, 20, 16);
+        jLabel6.setBounds(600, 280, 17, 14);
 
         jTextField2.setEditable(false);
         Factura.getContentPane().add(jTextField2);
@@ -616,7 +616,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel7.setText("Propina");
         Factura.getContentPane().add(jLabel7);
-        jLabel7.setBounds(600, 330, 70, 16);
+        jLabel7.setBounds(600, 330, 70, 14);
 
         jTextField3.setEditable(false);
         Factura.getContentPane().add(jTextField3);
@@ -624,7 +624,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel8.setText("Total Neto");
         Factura.getContentPane().add(jLabel8);
-        jLabel8.setBounds(600, 390, 60, 16);
+        jLabel8.setBounds(600, 390, 60, 14);
 
         jTextField4.setEditable(false);
         Factura.getContentPane().add(jTextField4);
@@ -674,7 +674,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel9.setText("N° de mesa");
         Factura.getContentPane().add(jLabel9);
-        jLabel9.setBounds(600, 150, 90, 16);
+        jLabel9.setBounds(600, 150, 90, 14);
 
         fondoF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FacturaP.png"))); // NOI18N
         Factura.getContentPane().add(fondoF);
@@ -684,7 +684,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel11.setText("Usuario:");
         Login.getContentPane().add(jLabel11);
-        jLabel11.setBounds(200, 380, 60, 16);
+        jLabel11.setBounds(200, 380, 60, 14);
 
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -696,7 +696,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
 
         jLabel10.setText("Contraseña: ");
         Login.getContentPane().add(jLabel10);
-        jLabel10.setBounds(190, 450, 100, 16);
+        jLabel10.setBounds(190, 450, 100, 14);
         Login.getContentPane().add(pass);
         pass.setBounds(190, 470, 220, 30);
 
@@ -720,7 +720,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
             }
         });
         Login.getContentPane().add(can);
-        can.setBounds(230, 580, 120, 17);
+        can.setBounds(230, 580, 120, 15);
 
         fondoL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/loginP.png"))); // NOI18N
         Login.getContentPane().add(fondoL);
@@ -745,31 +745,31 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         jRadioButton2.setText("Total ventas del dia");
         jRadioButton2.setOpaque(false);
         Administracion.getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(30, 160, 130, 25);
+        jRadioButton2.setBounds(30, 160, 130, 23);
 
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("Plato mas vendido");
         jRadioButton3.setOpaque(false);
         Administracion.getContentPane().add(jRadioButton3);
-        jRadioButton3.setBounds(30, 190, 120, 25);
+        jRadioButton3.setBounds(30, 190, 120, 23);
 
         buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("Camarero que gestiono mas numero de mesas");
         jRadioButton4.setOpaque(false);
         Administracion.getContentPane().add(jRadioButton4);
-        jRadioButton4.setBounds(30, 220, 250, 25);
+        jRadioButton4.setBounds(30, 220, 250, 23);
 
         buttonGroup1.add(jRadioButton5);
         jRadioButton5.setText("5 alimentos que mas se usan");
         jRadioButton5.setOpaque(false);
         Administracion.getContentPane().add(jRadioButton5);
-        jRadioButton5.setBounds(30, 260, 250, 25);
+        jRadioButton5.setBounds(30, 260, 250, 23);
 
         buttonGroup1.add(jRadioButton6);
         jRadioButton6.setText("5 alimentos que menos se usan");
         jRadioButton6.setOpaque(false);
         Administracion.getContentPane().add(jRadioButton6);
-        jRadioButton6.setBounds(30, 300, 240, 25);
+        jRadioButton6.setBounds(30, 300, 240, 23);
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Aceptar");
@@ -853,7 +853,7 @@ public class Principal extends javax.swing.JFrame implements Runnable {
             }
         });
         ResumenMesas.getContentPane().add(jButton9);
-        jButton9.setBounds(420, 90, 77, 25);
+        jButton9.setBounds(420, 90, 71, 23);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante La Prosperidad");
@@ -1585,35 +1585,20 @@ public class Principal extends javax.swing.JFrame implements Runnable {
                             } catch (IOException ex) {
                                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            a = ptr;
-                            Inventario a1 = a;
-                            int aux = 0, aux1 = 0;
-                            String aux2 = "";
-                            while (a != null) {
-                                while(a1 != null){
-                                    if (!a.ingrediente.equals(a1.ingrediente)) {
-                                        if (a.venta>a1.venta) {
-                                            aux = a.venta;
-                                            aux1 = a.existencias;
-                                            aux2 = a.ingrediente;
-                                            a.venta = a1.venta;
-                                            a.existencias = a1.existencias;
-                                            a.ingrediente = a1.ingrediente;
-                                            a1.venta = aux;
-                                            a1.existencias =aux1;
-                                            a1.ingrediente = aux2;
-                                        }
-                                    }
-                                    a1 = a1.link;
-                                }
-                                a = a.link;
+                            String Primero = BuscarMayor(ptr);
+                            JOptionPane.showMessageDialog(null, "El ingredientes mas usado es:"+Primero+".");
+                        }else{
+                            if (jRadioButton6.isSelected()) {
+                                Inventario a = new Inventario("", 0, 0);
+                            Inventario ptr = null;
+                            try {
+                                ptr = a.readIn();
+                            } catch (IOException ex) {
+                                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            a = ptr;
-                            while(a != null){
-                                System.out.println(a.venta);
-                                a = a.link;
+                            String Primerom = BuscarMenor(ptr);
+                            JOptionPane.showMessageDialog(null, "El ingredientes menos usado fue:"+Primerom+".");
                             }
-
                         }
                     }
                 }
@@ -1621,7 +1606,33 @@ public class Principal extends javax.swing.JFrame implements Runnable {
         }
 
     }//GEN-LAST:event_jButton8ActionPerformed
+    public String BuscarMayor(Inventario ptr) {
+        Inventario t = ptr.link;
+        int MV = ptr.venta;
+        String NMV = ptr.ingrediente;
+        while (t != null) {
+            if (MV < t.venta) {
+                MV = t.venta;
+                NMV = t.ingrediente;
+            }
+            t = t.link;
+        }
+        return NMV;
+    }
 
+    public String BuscarMenor(Inventario ptr) {
+        Inventario t = ptr.link;
+        int MV = ptr.venta;
+        String NMV = ptr.ingrediente;
+        while (t != null) {
+            if (MV > t.venta) {
+                MV = t.venta;
+                NMV = t.ingrediente;
+            }
+            t = t.link;
+        }
+        return NMV;
+    }
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         ResumenMesas.setVisible(false);
